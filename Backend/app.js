@@ -18,3 +18,8 @@ app.get('/', (req, res) => {
 
 
 app.listen(3000);
+
+
+// "dev": "npm-run-all dev:*",
+// "dev:watch": "nodemon --watch '*/**.ts' -e ts --exec tsc",
+// "dev:run": "nodemon --watch dist/app.js --exec 'node dist/app.js'"
