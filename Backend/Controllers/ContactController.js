@@ -10,10 +10,11 @@ const Contact = require('../models/contact.js');
 
 //list contacts function
 exports.listContacts = (req, res, next) => {
-    Contact.find()
+    Contact.find({ _idUser: req.params.idUser })
       .then(contacts => res.status(200).json(contacts))
       .catch(error => res.status(400).json({ error }));
 }
+
 
 //save contact function
 exports.saveContact = (req, res, next) => {
@@ -25,7 +26,6 @@ exports.saveContact = (req, res, next) => {
       .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
       .catch(error => res.status(400).json({ error }));
 }
-
 
 
 //define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
@@ -83,7 +83,7 @@ exports.contactsUpload = (req, res, next)=>{
                 const contact = new Contact({
                   name: importedContactsList[i].name,
                   phoneNumber: importedContactsList[i].phoneNumber,
-                  _idUser: importedContactsList[i]._idUser,
+                  _idUser: req.params.idUser,
               });
               //*/
               //*
