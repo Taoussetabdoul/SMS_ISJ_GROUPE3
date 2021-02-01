@@ -18,3 +18,9 @@
     - `./src/server.ts` contain our server
 
 - run `npm run dev` to verify new config
+
+## Changement of v0.0.1 (branch childeric v2)
+### Backend
+- `./src/constants/types.constant.ts` contient les interfaces utilisés par plusieurs modules
+- `./src/services/message.service.ts` contient les services liés à la partie Message (Nelson voici des exemples d'uitlisation)
+- J'ai aussi modifié `./src/router.ts` où j'ai ajouté les endpoint pour exposer mes services
