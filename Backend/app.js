@@ -1,9 +1,15 @@
 const express=require('express');
 const bodyParser=require('body-parser');
-
+const mongoose=require('mongoose');
+const route = require('./routes/contact');
 const app=express();
 
+
+
 app.use(bodyParser.json());
+
+
+app.use(route);
 
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -16,10 +22,9 @@ app.get('/', (req, res) => {
     res.send("Node Server is running.")
 })
 
+mongoose.connect('mongodb://localhost:27017/test', { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true }).then(() => console.log('Connexion à MongoDB réussie !')).catch(() => console.log('Connexion à MongoDB échouée !'));
+    
 
 app.listen(3000);
-
-
-// "dev": "npm-run-all dev:*",
-// "dev:watch": "nodemon --watch '*/**.ts' -e ts --exec tsc",
-// "dev:run": "nodemon --watch dist/app.js --exec 'node dist/app.js'"

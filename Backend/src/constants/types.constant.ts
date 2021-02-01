@@ -1,3 +1,5 @@
+import { Request, Response } from "express";
+
 export interface IMessage {
     to: string;
     datetime: Date;
@@ -13,4 +15,8 @@ export interface IJSONResult {
 
 export interface IService {
     result: IJSONResult|null
+}
+
+export abstract class AbstractMiddleware {
+    static load: (req: Request, res: Response, next: any) => void
 }

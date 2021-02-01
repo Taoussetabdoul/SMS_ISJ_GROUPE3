@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { Router } from './router';
+import middlewares from './middlewares';
 
 class App {
   public app: Application;
@@ -24,6 +25,8 @@ class App {
 
     // Enables cors   
     this.app.use(cors());
+
+    middlewares.forEach(middleware => this.app.use(middleware.load))
   }
 }
 

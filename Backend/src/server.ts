@@ -1,14 +1,15 @@
+import mongoose from 'mongoose';
+
 import app from './app';
-import { CLEAN_DB, PORT } from './constants/settings.constant';
-import models from './models';
-import db from './models/connection';
+import { CLEAN_DB, DATABASE_URL, PORT } from './constants/settings.constant';
 
-
-/* (async () => {
-    if (db && CLEAN_DB) {
-        await Promise.all([
-            models.User.deleteMany()
-        ])
-    }
-})() */
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
+app.listen(PORT, () => {
+    mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.info("MongoDB connection has successfull!")
+    }).catch(err => {
+        console.error("MongoDB connection don't has successfull!")
+    })
+    
+    console.info(`Server started on address http://localhost:${PORT}`)
+})
