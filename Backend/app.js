@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 const mongoose = require('mongoose');// database initialization
 
 //database access configuration
-mongoose.connect('mongodb+srv://groupe3:sms_1SJgr0up3@cluster0.m0abj.mongodb.net/<dbname>?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://groupe3:sms_1SJgr0up3@cluster0.m0abj.mongodb.net/DB-sms?retryWrites=true&w=majority',
     { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
