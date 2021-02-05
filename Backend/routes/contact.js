@@ -4,8 +4,8 @@ const contactsController=require('../Controllers/ContactController');
 
 router = express.Router();
 
-router.get('/contact/:idUser',contactsController.listContacts);
-router.post('/api/contact', contactsController.saveContact);
+router.get('/contactList/:idUser',contactsController.listContacts);
+router.post('/saveContact', contactsController.saveContact);
 router.post('/upload/:idUser',contactsController.contactsUpload);
 
 

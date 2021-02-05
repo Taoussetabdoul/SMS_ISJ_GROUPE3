@@ -9,7 +9,6 @@ const app=express();
 app.use(bodyParser.json());
 
 
-app.use(route);
 
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -21,6 +20,8 @@ app.use((req,res,next)=>{
 app.get('/', (req, res) => {
     res.send("Node Server is running.")
 })
+
+app.use("/contact",route);
 
 mongoose.connect('mongodb://localhost:27017/test', { 
     useNewUrlParser: true, 

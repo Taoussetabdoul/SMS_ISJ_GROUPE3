@@ -35,7 +35,7 @@ const fileStorage=multer.diskStorage({
     cb(null,DIR);
   },
   filename:(reg,file,cb)=>{
-    cb(null,'dataAccount.xls');
+    cb(null,'contactList.csv');
   }
 })
 
@@ -62,7 +62,7 @@ exports.contactsUpload = (req, res, next)=>{
 
 
 
-        fs.createReadStream('./uploads/dataAccount.csv')
+        fs.createReadStream('./uploads/contactList.csv')
         .pipe(csvParser())
         .on('data', (row) => {
 
