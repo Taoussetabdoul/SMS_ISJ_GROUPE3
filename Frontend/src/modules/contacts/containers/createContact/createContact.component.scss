@@ -1,0 +1,4 @@
+@import 'styles/variables.scss';
+.ng-invalid:not(form){
+    border-color: red;
+}

@@ -5,7 +5,8 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/dashboard',
+        redirectTo: '/contact/consult',
+        //redirectTo: '/dashboard',
     },
     {
         path: 'charts',
@@ -19,6 +20,15 @@ const routes: Routes = [
                 m => m.DashboardRoutingModule
             ),
     },
+    /********************* */
+    {
+        path: 'contact',
+        loadChildren: () =>
+            import('modules/contacts/contact-routing.module').then(
+                m => m.ContactRoutingModule
+            ),
+    },
+    /************************* */
     {
         path: 'auth',
         loadChildren: () =>

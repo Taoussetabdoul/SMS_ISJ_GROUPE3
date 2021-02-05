@@ -1,0 +1,43 @@
+<sb-layout-auth
+><div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 ">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Liste des contacts</h3></div>
+                <div class="card-body">
+                    <form>
+                        <!-- <div class="form-group form-inline">Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="countryService.searchTerm" /><span class="ml-3" *ngIf="countryService.loading$ | async">Loading...</span></div> -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" sbSortable="name"><span>Nom</span></th>
+                                    <th scope="col" sbSortable="area"><span>Numéro</span></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let contact of contacts; let ind=index">
+                                    <th scope="row">{{ind+1}}</th>
+                                    <td>{{contact.name}}</td>
+                                    <td>{{contact.phoneNumber}}</td>
+                                    
+                                </tr>
+                                <!-- <div>{{contacts}}</div> -->
+                                
+                            </tbody>
+                        </table>
+                        <!-- <div class="d-flex justify-content-between p-2">
+                            <ngb-pagination [collectionSize]="total$ | async" [(page)]="countryService.page" [pageSize]="countryService.pageSize"></ngb-pagination>
+                        </div> -->
+                    </form>
+                </div>
+                <!--<div class="card-footer text-center">
+                    <div class="small"><a routerLink="/auth/login">Have an account? Go to login</a></div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div></sb-layout-auth
+>
+ 
