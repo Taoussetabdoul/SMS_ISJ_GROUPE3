@@ -1,0 +1,32 @@
+<sb-layout-auth
+    ><div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 ">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Import/export Contacts</h3></div>
+                    <div class="card-body">
+                        <form  class="form" method="" action="">
+                            <div class="row">
+                              <div class="text" style="text-align: center">
+                                <input *ngIf="!import" type="button" (click)="exportToCsv()" value="exporter les contacts" style="background-color: rgb(109, 172, 214);" class="btn btn-primary btn-round mt-4">
+                                <input *ngIf="!import" type="button" (click)="importTrigger()" value="Importer des contacts" style="background-color: rgb(109, 172, 214);" class="btn btn-primary btn-round mt-4">
+                                
+                                <form *ngIf="import">
+                                  <input style="margin-top: 10px;margin-left: 84px;" type="file" (change)="onFileSelected($event)" />
+                                  <button mat-raised-button style="background-color: rgb(109, 172, 214);" class="btn btn-primary pull-right" type="button" (click)="cancel()">annuler</button>
+                                  <button mat-raised-button [disabled]="selectedFile==null" style="background-color: rgb(109, 172, 214);" class="btn btn-primary pull-right" type="button" (click)="onUpload()">importer</button>
+                                </form> 
+
+                              </div>
+              
+                            </div>
+                          </form>
+                    </div>
+                    <!--<div class="card-footer text-center">
+                        <div class="small"><a routerLink="/auth/login">Have an account? Go to login</a></div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div></sb-layout-auth
+>
