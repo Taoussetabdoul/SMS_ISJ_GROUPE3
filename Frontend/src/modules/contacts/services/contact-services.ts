@@ -6,6 +6,7 @@ import { Contact } from '../models/contact'
 @Injectable()
 export class ContactService{
 
+    private userId:string='';
     
     constructor(public http:HttpClient){
 
@@ -13,10 +14,18 @@ export class ContactService{
     
     getContacts():Observable<Contact[]>{
         
-        return this.http.get<Contact[]>("http://localhost:3000/contact/contactList/49")
+        return this.http.get<Contact[]>("http://localhost:3000/contact/contactList/"+this.userId);
     }
 
     saveContact(contact:Contact){
-         return this.http.post("http://localhost:3000/contact/saveContact",contact)
+         return this.http.post("http://localhost:3000/contact/saveContact",contact);
+    }
+
+    getUserId():string{
+        return this.userId;     
+    }
+
+    setUserId(Id:string){
+        this.userId=Id;
     }
 }

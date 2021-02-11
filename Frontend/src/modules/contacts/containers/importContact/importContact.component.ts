@@ -13,12 +13,14 @@ import { ExportService } from '@modules/contacts/services/export-service';
 })
 export class ImportContactComponent implements OnInit {
     contacts:Contact[]=[];
+    userId:string="";
     constructor(private contactService:ContactService,private http:HttpClient,private exportService:ExportService) {
 
     }
 
 
     ngOnInit():void {
+        this.userId=this.contactService.getUserId();
        
         this.contactService.getContacts().subscribe(
             res=>{
@@ -59,7 +61,7 @@ onFileSelected(event:any){
 onUpload(){
     const fd=new FormData();
     fd.append('contact',this.selectedFile,this.selectedFile.name)
-    this.http.post('http://localhost:3000/contact/upload/49',fd)
+    this.http.post('http://localhost:3000/contact/upload/'+this.userId,fd)
              .subscribe(res=>{
                  console.log("in upload",res);
                  let obj:any = res

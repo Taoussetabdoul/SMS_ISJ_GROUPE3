@@ -11,6 +11,7 @@ import swal from 'sweetalert2';
 })
 export class CreateContactComponent implements OnInit {
     newContact:Contact={name:"",phoneNumber:"",_idUser:"10"};
+    userId:string='';
     
     constructor(private contactService:ContactService) {
 
@@ -18,7 +19,7 @@ export class CreateContactComponent implements OnInit {
 
     createContact(){
         console.log("contact créé");
-        this.newContact={name:"",phoneNumber:"",_idUser:""};
+        
         this.contactService.saveContact(this.newContact).subscribe(
             res => {
               console.log(res);
@@ -29,6 +30,7 @@ export class CreateContactComponent implements OnInit {
                 confirmButtonClass: 'btn btn-success',
                 buttonsStyling: false
             });
+            this.newContact={name:"",phoneNumber:"",_idUser:this.userId};
     },
     err => {
       console.log('CREATE USER ERROR', err.error);
@@ -43,5 +45,7 @@ export class CreateContactComponent implements OnInit {
     
     );
 }
-    ngOnInit() {}
+    ngOnInit() {
+        this.userId=this.contactService.getUserId();
+    }
 }
